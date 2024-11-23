@@ -1,13 +1,12 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './SideBar.css'
 import file_icon_not_chosen from './file.png'
 import file_icon_chosen from './file1.png'
 import {suggestions} from "./suggestions";
 
-const SideBar = () => {
-
+const SideBar = ({func, setUserMessage}) => {
     const [file, setFile] = React.useState([])
-
+    const [userMessage, setLocalUserMessage] = useState('');
     return (
         <div className="SideBar">
             <input style={{
@@ -30,10 +29,22 @@ const SideBar = () => {
                 }</p>
             </div>
 
-            <textarea className="user-input" placeholder="Start typing..."></textarea>
+            <textarea
+                className="user-input"
+                placeholder={func.placeholder === undefined ? "Start typing..." : func.placeholder}
+                value={userMessage}
+                onChange={(e) => setLocalUserMessage(e.target.value)}>
+            </textarea>
+            <span className="send-button material-symbols-outlined"
+                  onClick={() => {
+                      setUserMessage(userMessage);
+                      setLocalUserMessage('');
+                  }}
+            >send</span>
+
             <div className="suggestions">
 
-                { suggestions.map((suggestion) => (
+                {suggestions.map((suggestion) => (
                     <div className="suggestion">
                         <p className="name">{suggestion.name}</p>
                         <p className="description">{suggestion.description}</p>

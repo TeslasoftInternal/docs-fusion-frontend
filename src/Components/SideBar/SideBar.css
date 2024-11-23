@@ -101,8 +101,17 @@
         text-overflow: ellipsis;   /* Adds the ellipsis (...) */
     }
 
+}
 
-
+.send-button{
+    cursor: pointer;
+    position: absolute;
+    color:#e20074;
+    padding: 12px;
+    background: #351c2a;
+    border-radius: 30px;
+    left: 372px;
+    bottom: 132px;
 }
 
 .suggestions::-webkit-scrollbar {
