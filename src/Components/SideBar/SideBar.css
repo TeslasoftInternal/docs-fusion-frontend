@@ -1,0 +1,111 @@
+.SideBar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #1c1c1c;
+    height: calc(100vh - 132px);
+    width: 400px;
+    border-radius: 24px;
+    padding: 16px;
+}
+
+.choose-file {
+    display:flex;
+    cursor: pointer;
+    border-radius: 16px;
+    padding: 0 10px;
+    background: #351c2a;
+    transition: .3s;
+    align-items: center;
+
+}
+
+.choose-file:hover {
+    background: #4a2936;
+}
+
+.file-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.chosen-file {
+    display:flex;
+    cursor: pointer;
+    border-radius: 16px;
+    padding: 0 10px;
+    background: #e20074;
+    align-items: center;
+}
+
+.upload-file {
+    font-size: 14pt;
+    font-weight: 400;
+    color: #ffffff;
+    white-space: nowrap;       /* Prevents the text from wrapping to a new line */
+    overflow: hidden;          /* Hides any overflowing text */
+    text-overflow: ellipsis;   /* Adds the ellipsis (...) */
+}
+
+
+.user-input{
+    border-radius: 16px;
+    padding: 16px;
+    outline: none;
+    flex-grow: 4;
+    background: black;
+    border:none;
+    resize: none;
+    color:#FFFFFF
+}
+
+.suggestions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    overflow-x: auto;
+    gap:16px;
+
+    .suggestion{
+        cursor: pointer;
+        background-color: #351c2a;
+        border-radius: 24px;
+        width: 50%;
+        padding: 16px;
+        text-align: left;
+        transition: .3s;
+    }
+
+    .suggestion:hover{
+        background-color: #472538;
+    }
+
+    .name {
+        margin: 0;
+        font-weight: 600;
+        font-size: 18px;
+        color: #ffffff;
+        white-space: nowrap;       /* Prevents the text from wrapping to a new line */
+        overflow: hidden;          /* Hides any overflowing text */
+        text-overflow: ellipsis;   /* Adds the ellipsis (...) */
+    }
+
+    .description {
+        margin: 0;
+        font-weight: 400;
+        font-size: 15px;
+        color: #cccbcb;
+        white-space: nowrap;       /* Prevents the text from wrapping to a new line */
+        overflow: hidden;          /* Hides any overflowing text */
+        text-overflow: ellipsis;   /* Adds the ellipsis (...) */
+    }
+
+
+
+}
+
+.suggestions::-webkit-scrollbar {
+    background: transparent;
+    height: 0;
+}
