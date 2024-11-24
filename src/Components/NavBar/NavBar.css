@@ -18,7 +18,7 @@
 .nav-bar .logo-container {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
 
     .name {
         font-weight: 600;
@@ -28,7 +28,7 @@
     }
 
     .logo {
-        width: 25px;
+        width: 48px;
         height: auto;
     }
 

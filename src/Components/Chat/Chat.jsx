@@ -1,6 +1,6 @@
 import React from "react";
 import './Chat.css'
-import chatIcon from '../NavBar/T-logo.png'
+import chatIcon from '../NavBar/icon.png'
 import userIcon from '../NavBar/account.png'
 import Markdown from 'react-markdown'
 import remarkGfm from "remark-gfm";

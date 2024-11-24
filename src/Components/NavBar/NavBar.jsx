@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import logo from './T-logo.png'
+import React, { useEffect } from 'react';
+import logo from './icon.png'
 import account_icon from './account.png'
 import {prompts} from './prompts'
 
@@ -21,7 +21,7 @@ const NavBar = ({setFunc}) => {
                     src={logo}
                     alt="Logo"
                 />
-                <h1 className="name"> DocFusion AI</h1>
+                <h1 className="name">DocFusion AI</h1>
             </div>
 
             <div className="functions">

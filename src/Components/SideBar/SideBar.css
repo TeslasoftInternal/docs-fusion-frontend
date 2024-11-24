@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 16px;
     background: #1c1c1c;
-    height: calc(100vh - 132px);
+    height: calc(100vh - 128px);
     width: 400px;
     border-radius: 24px;
     padding: 16px;
