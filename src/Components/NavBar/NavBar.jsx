@@ -6,11 +6,11 @@ import {prompts} from './prompts'
 import './NavBar.css'
 import {Tooltip} from "@mui/material";
 
-const NavBar = ({setFunc, setPreviewOpened}) => {
+const NavBar = ({setFunc, setPreviewOpened, previewOpened}) => {
 
-    const [previewIsOpened, setPreviewIsOpened] = React.useState(false)
+    const [previewIsOpened, setPreviewIsOpened] = React.useState(previewOpened)
 
-    const[func, setFunction] = React.useState(prompts[0])
+    const [func, setFunction] = React.useState(prompts[0])
 
     useEffect(()=>{
         setFunc(func)
@@ -54,8 +54,9 @@ const NavBar = ({setFunc, setPreviewOpened}) => {
                 <Tooltip title="Preview document">
                     <span
                         onClick={() => {
-                            setPreviewIsOpened(!previewIsOpened)}
-                    }
+                            setPreviewIsOpened(!previewIsOpened)
+                            localStorage.setItem("preview", JSON.stringify(!previewIsOpened))
+                        }}
                         className={`function ${previewIsOpened ? "chosen" : ""} material-symbols-outlined`}
                         style={{ color: "#e20074", cursor: "pointer" }}
                     >
