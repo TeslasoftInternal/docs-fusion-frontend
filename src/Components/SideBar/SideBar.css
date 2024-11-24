@@ -103,7 +103,7 @@
 
 }
 
-.send-button{
+.send-button {
     cursor: pointer;
     position: absolute;
     color:#e20074;
@@ -117,4 +117,15 @@
 .suggestions::-webkit-scrollbar {
     background: transparent;
     height: 0;
+}
+
+.loading-bar {
+    cursor: not-allowed;
+    position: absolute;
+    color: #e20074;
+    background: #351c2a;
+    border-radius: 30px;
+    left: 376px;
+    bottom: 132px;
+    z-index: 5;
 }

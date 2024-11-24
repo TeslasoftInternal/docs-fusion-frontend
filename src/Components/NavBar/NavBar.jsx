@@ -8,7 +8,7 @@ import {Tooltip} from "@mui/material";
 
 const NavBar = ({setFunc}) => {
 
-    const[func, setFunction] = React.useState({})
+    const[func, setFunction] = React.useState(prompts[0])
 
     useEffect(()=>{
         setFunc(func)

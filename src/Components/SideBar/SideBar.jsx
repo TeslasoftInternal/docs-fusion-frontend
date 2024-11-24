@@ -1,14 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import './SideBar.css'
 import file_icon_not_chosen from './file.png'
 import file_icon_chosen from './file1.png'
 import {suggestions} from "./suggestions";
+import {CircularProgress} from "@mui/material";
 
-const SideBar = ({func, setUserMessage}) => {
+const SideBar = ({func, pushMessage, setFiles, loading}) => {
     const [file, setFile] = React.useState([])
-    const [userMessage, setLocalUserMessage] = useState('');
+
+    useEffect(() => {
+        setFiles(file)
+    }, [file]);
+
     return (
         <div className="SideBar">
+            {
+                loading ? <div className={"loading-bar"}>
+                    <CircularProgress sx={{
+                        color: "#e20074",
+                    }}/>
+                </div> : null
+            }
             <input style={{
                 display: 'none',
             }} id="fileinput" type={"file"} onChange={(e) => {
@@ -17,10 +29,10 @@ const SideBar = ({func, setUserMessage}) => {
 
             <div onClick={() => {
                 document.getElementById("fileinput").click();
-            }} className={file.length === 0 ? "choose-file" : "chosen-file"}>
+            }} className={ file.length === 0 ? "choose-file" : "chosen-file" }>
                 <img
                     className="file-icon"
-                    src={file.length === 0 ? file_icon_not_chosen : file_icon_chosen}
+                    src={ file.length === 0 ? file_icon_not_chosen : file_icon_chosen }
                     alt="File icon"
                 />
                 &nbsp;&nbsp;
@@ -29,29 +41,39 @@ const SideBar = ({func, setUserMessage}) => {
                 }</p>
             </div>
 
-            <textarea
+            <textarea onKeyDown={(e) => {
+                if (e.key === "Enter" && e.shiftKey && !loading) {
+                    pushMessage({
+                        type: "user",
+                        message: document.getElementById("user-input").value
+                    });
+
+                    document.getElementById("user-input").value = ""
+                }
+            }}
+                id = "user-input"
                 className="user-input"
-                placeholder={func.placeholder === undefined ? "Start typing..." : func.placeholder}
-                value={userMessage}
-                onChange={(e) => setLocalUserMessage(e.target.value)}>
+                placeholder={func.placeholder === undefined ? "Start typing..." : func.placeholder}>
             </textarea>
             <span className="send-button material-symbols-outlined"
                   onClick={() => {
-                      setUserMessage(userMessage);
-                      setLocalUserMessage('');
+                      pushMessage({
+                            type: "user",
+                            message: document.getElementById("user-input").value
+                      });
+
+                      document.getElementById("user-input").value = ""
                   }}
             >send</span>
 
             <div className="suggestions">
 
-                {suggestions.map((suggestion) => (
-                    <div className="suggestion">
+                {suggestions.map((suggestion, idx) => (
+                    <div key={idx.toString()} className="suggestion">
                         <p className="name">{suggestion.name}</p>
                         <p className="description">{suggestion.description}</p>
                     </div>
                 ))}
-
-
             </div>
         </div>
     )

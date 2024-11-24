@@ -1,19 +1,18 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from "./Components/NavBar/NavBar";
 import DocFusionAI from "./Pages/DocFusionAI"
-import {useState} from "react";
+import { useState } from "react";
+import {prompts} from "./Components/NavBar/prompts";
 
 function App() {
-    const [func, setFunc] = useState({});
+    const [func, setFunc] = useState(prompts[0]);
 
 
     return (
         <div className="App">
             <BrowserRouter>
-
                 <NavBar setFunc={setFunc} />
-
                 <Routes>
                     <Route path="/" element={<DocFusionAI func={func}/>}/>
                 </Routes>
