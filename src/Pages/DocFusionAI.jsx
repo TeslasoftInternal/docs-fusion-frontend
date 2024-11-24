@@ -11,9 +11,14 @@ const DocFusionAI = ({func}) => {
     const [loading, setLoading] = useState(false)
 
     const pushMessage = (message) => {
+        if (file === undefined || file.length === 0) {
+            alert("Please upload a file.")
+            return
+        }
+
         let mx = {
             type: "user",
-            message: message
+            message: message.message
         }
 
         if (func.type === "analyze") {
