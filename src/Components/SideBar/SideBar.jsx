@@ -12,6 +12,12 @@ const SideBar = ({func, pushMessage, setFiles, loading}) => {
         setFiles(file)
     }, [file]);
 
+    const insertSuggestion = (text) => {
+        const inputField = document.getElementById("user-input");
+        inputField.value = text;
+        inputField.focus();
+    };
+
     return (
         <div className="SideBar">
             {
@@ -69,7 +75,27 @@ const SideBar = ({func, pushMessage, setFiles, loading}) => {
             <div className="suggestions">
 
                 {suggestions.map((suggestion, idx) => (
-                    <div key={idx.toString()} className="suggestion">
+                    <div key={idx.toString()} className="suggestion" onClick={() => {
+                        func.type = suggestion.type
+                        if (suggestion.type === "translate") {
+                            insertSuggestion("Translate to the following language: ");
+                        }
+                        else if (suggestion.type === "analyze") {
+                            insertSuggestion("Fill the missing words in text from the following PDF content. " +
+                                "If there`s no missing words, write it:")
+                            pushMessage({
+                                type: "user",
+                                message: document.getElementById("user-input").value
+                            })
+                        }
+                        else {
+                            insertSuggestion(suggestion.name)
+                            pushMessage({
+                                type: "user",
+                                message: document.getElementById("user-input").value
+                            })
+                        }
+                        }}>
                         <p className="name">{suggestion.name}</p>
                         <p className="description">{suggestion.description}</p>
                     </div>

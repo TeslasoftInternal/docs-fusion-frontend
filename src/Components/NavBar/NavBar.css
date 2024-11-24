@@ -28,8 +28,8 @@
     }
 
     .logo {
-        width: 48px;
-        height: auto;
+        width: 32px;
+        height: 32px;
     }
 
 }
@@ -40,7 +40,7 @@
     display: flex;
     position: fixed;
     z-index: 10;
-    left: calc(50% - (16px * 7) - (7 * 12px));
+    left: calc(50% - (16px * 8) - (8 * 12px));
     gap: 12px;
     background: #1C1C1C;
 
