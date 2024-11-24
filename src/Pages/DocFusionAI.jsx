@@ -11,9 +11,30 @@ const DocFusionAI = ({func}) => {
     const [loading, setLoading] = useState(false)
 
     const pushMessage = (message) => {
-        setUserMessages([...userMessages, message])
-        sendMessages([...userMessages, message])
-        localStorage.setItem("messages", JSON.stringify([...userMessages, message]))
+        let mx = {
+            type: "user",
+            message: message
+        }
+
+        if (func.type === "analyze") {
+            mx.message = message
+        } else if (func.type === "summarize") {
+            mx.message = "Summarize the following text."
+        } else if (func.type === "translate") {
+            mx.message = "Translate to the following language: " + message
+        } else if (func.type === "categorize") {
+            mx.message = "Automatically categorize the document based on its content."
+        } else if (func.type === "optimize") {
+            mx.message = "Conduct a thorough review to correct grammar, spelling, and punctuation errors, enhance structure, and flag passive voice, jargon, or repetitive phrases."
+        } else if (func.type === "highlight") {
+            mx.message = "Highlight the most important sentences or paragraphs in the document."
+        } else if (func.type === "email") {
+            mx.message = "Generate Professional Email according to the following instructions: " + message
+        }
+
+        setUserMessages([...userMessages, mx])
+        sendMessages([...userMessages, mx])
+        localStorage.setItem("messages", JSON.stringify([...userMessages, mx]))
     }
 
     const pushMessageAsBot = (user, message) => {

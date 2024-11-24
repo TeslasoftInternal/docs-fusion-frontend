@@ -19,7 +19,9 @@ const Chat = ({userMessages, clearChat}) => {
                             <div className="icon-div">
                                 <img src={message.type === "user" ? userIcon : chatIcon} alt="user icon"/>
                             </div>
-                            <Markdown remarkPlugins={[remarkGfm]}>{message.message}</Markdown>
+                            <div>
+                                <Markdown remarkPlugins={[remarkGfm]}>{message.message}</Markdown>
+                            </div>
                         </div>
                     ))
                 }
