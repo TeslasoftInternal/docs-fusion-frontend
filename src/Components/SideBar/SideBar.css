@@ -17,6 +17,7 @@
     background: #351c2a;
     transition: .3s;
     align-items: center;
+    user-select: none;
 
 }
 
@@ -36,6 +37,7 @@
     padding: 0 10px;
     background: #e20074;
     align-items: center;
+    user-select: none;
 }
 
 .upload-file {
@@ -48,7 +50,7 @@
 }
 
 
-.user-input{
+.user-input {
     border-radius: 16px;
     padding: 16px;
     outline: none;
@@ -59,15 +61,16 @@
     color:#FFFFFF
 }
 
-.suggestions{
+.suggestions {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width:100%;
+    width: 100%;
     overflow-x: auto;
-    gap:16px;
+    gap: 16px;
+    user-select: none;
 
-    .suggestion{
+    .suggestion {
         cursor: pointer;
         background-color: #351c2a;
         border-radius: 24px;
@@ -77,7 +80,7 @@
         transition: .3s;
     }
 
-    .suggestion:hover{
+    .suggestion:hover {
         background-color: #472538;
     }
 
@@ -112,6 +115,11 @@
     border-radius: 30px;
     left: 372px;
     bottom: 136px;
+    transition: .3s;
+}
+
+.send-button:hover {
+    background: #472538;
 }
 
 .suggestions::-webkit-scrollbar {
