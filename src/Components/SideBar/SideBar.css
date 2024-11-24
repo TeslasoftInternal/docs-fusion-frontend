@@ -111,7 +111,7 @@
     background: #351c2a;
     border-radius: 30px;
     left: 372px;
-    bottom: 132px;
+    bottom: 136px;
 }
 
 .suggestions::-webkit-scrollbar {
@@ -126,6 +126,6 @@
     background: #351c2a;
     border-radius: 30px;
     left: 376px;
-    bottom: 132px;
+    bottom: 136px;
     z-index: 5;
 }

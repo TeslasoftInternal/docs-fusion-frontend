@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    font-size: 14pt;
+    font-size: 12pt;
     color: #ffffff;
 
     ul {
@@ -103,8 +103,8 @@
     width: 48px;
     height: 48px;
     position: fixed;
-    top: 96px;
-    right: 32px;
+    top: 84px;
+    right: 20px;
 }
 
 .btn-clear:hover {
