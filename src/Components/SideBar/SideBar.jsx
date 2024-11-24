@@ -81,7 +81,8 @@ const SideBar = ({func, pushMessage, setFiles, loading}) => {
                             insertSuggestion("Translate to the following language: ");
                         }
                         else if (suggestion.type === "analyze") {
-                            insertSuggestion("Fill the missing words in text from the following PDF content:")
+                            insertSuggestion("Fill the missing words in text from the following PDF content. " +
+                                "If there`s no missing words, write it:")
                             pushMessage({
                                 type: "user",
                                 message: document.getElementById("user-input").value
