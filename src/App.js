@@ -7,12 +7,12 @@ import {prompts} from "./Components/NavBar/prompts";
 
 function App() {
     const [func, setFunc] = useState(prompts[0]);
-    const [previewOpened, setPreviewOpened] = useState(false);
+    const [previewOpened, setPreviewOpened] = useState(localStorage.getItem("preview") !== undefined && localStorage.getItem("preview") != null ? JSON.parse(localStorage.getItem("preview")) : false);
 
     return (
         <div className="App">
             <BrowserRouter>
-                <NavBar setPreviewOpened={setPreviewOpened} setFunc={setFunc} />
+                <NavBar previewOpened={previewOpened} setPreviewOpened={setPreviewOpened} setFunc={setFunc} />
                 <Routes>
                     <Route path="/" element={<DocFusionAI previewOpened={previewOpened} func={func}/>}/>
                 </Routes>
