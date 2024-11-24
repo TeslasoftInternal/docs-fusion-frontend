@@ -1,18 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import logo from './T-logo.png'
+import React, {useEffect} from 'react';
+import logo from './icon.png'
 import account_icon from './account.png'
 import {prompts} from './prompts'
 
 import './NavBar.css'
 import {Tooltip} from "@mui/material";
 
-const NavBar = ({setFunc}) => {
+const NavBar = ({setFunc, setPreviewOpened}) => {
+
+    const [previewIsOpened, setPreviewIsOpened] = React.useState(false)
 
     const[func, setFunction] = React.useState(prompts[0])
 
     useEffect(()=>{
         setFunc(func)
     }, [func])
+
+    useEffect(()=>{
+        setPreviewOpened(previewIsOpened)
+    }, [previewIsOpened])
 
     return (
         <div className="nav-bar">
@@ -21,7 +27,7 @@ const NavBar = ({setFunc}) => {
                     src={logo}
                     alt="Logo"
                 />
-                <h1 className="name"> DocFusion AI</h1>
+                <h1 className="name">DocFusion AI</h1>
             </div>
 
             <div className="functions">
@@ -40,14 +46,20 @@ const NavBar = ({setFunc}) => {
                         </Tooltip>
                     );
                 })}
-
-                <Tooltip title="Custom Action">
+                <div style={{
+                    width: "1px",
+                    height: "40px",
+                    backgroundColor: "rgba(255, 255, 255, 0.2)"
+                }}></div>
+                <Tooltip title="Preview document">
                     <span
-                        onClick={() => alert("Custom Action Clicked!")}
-                        className="function material-symbols-outlined"
+                        onClick={() => {
+                            setPreviewIsOpened(!previewIsOpened)}
+                    }
+                        className={`function ${previewIsOpened ? "chosen" : ""} material-symbols-outlined`}
                         style={{ color: "#e20074", cursor: "pointer" }}
                     >
-                        add_circle
+                        {previewIsOpened ? "visibility_off" : "visibility"}
                     </span>
                 </Tooltip>
             </div>

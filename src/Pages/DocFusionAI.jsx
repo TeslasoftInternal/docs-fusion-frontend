@@ -3,8 +3,9 @@ import './CSS/DocFusionAI.css'
 import SideBar from "../Components/SideBar/SideBar";
 import Chat from "../Components/Chat/Chat";
 import {runApi} from "../Services/Api";
+import PreviewPanel from "../Components/NavBar/PreviewPanel";
 
-const DocFusionAI = ({func}) => {
+const DocFusionAI = ({func, previewOpened}) => {
 
     const [userMessages, setUserMessages] = useState(localStorage.getItem("messages") !== undefined && localStorage.getItem("messages") != null ? JSON.parse(localStorage.getItem("messages")) : []);
     const [file, setFile] = useState([])
@@ -85,6 +86,7 @@ const DocFusionAI = ({func}) => {
         <div className="docFusionAI">
             <SideBar loading={loading} setFiles={setFile} func={func} pushMessage={pushMessage}/>
             <Chat func={func} userMessages={userMessages} clearChat={clearChat}/>
+            {previewOpened ? <PreviewPanel file={file}/> : null}
         </div>
     )
 }

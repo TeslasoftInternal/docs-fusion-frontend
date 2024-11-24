@@ -7,14 +7,14 @@ import {prompts} from "./Components/NavBar/prompts";
 
 function App() {
     const [func, setFunc] = useState(prompts[0]);
-
+    const [previewOpened, setPreviewOpened] = useState(false);
 
     return (
         <div className="App">
             <BrowserRouter>
-                <NavBar setFunc={setFunc} />
+                <NavBar setPreviewOpened={setPreviewOpened} setFunc={setFunc} />
                 <Routes>
-                    <Route path="/" element={<DocFusionAI func={func}/>}/>
+                    <Route path="/" element={<DocFusionAI previewOpened={previewOpened} func={func}/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
