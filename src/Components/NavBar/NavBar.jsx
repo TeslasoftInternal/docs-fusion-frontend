@@ -40,6 +40,16 @@ const NavBar = ({setFunc}) => {
                         </Tooltip>
                     );
                 })}
+
+                <Tooltip title="Custom Action">
+                    <span
+                        onClick={() => alert("Custom Action Clicked!")}
+                        className="function material-symbols-outlined"
+                        style={{ color: "#e20074", cursor: "pointer" }}
+                    >
+                        add_circle
+                    </span>
+                </Tooltip>
             </div>
 
             <img className="account-icon"
