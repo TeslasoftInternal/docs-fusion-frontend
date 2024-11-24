@@ -24,7 +24,9 @@ function PreviewPanel({file}) {
         <div className={"preview-panel"}>
             {
                 !fileURL ? <div className={"no-preview"} style={{
-                        color: "white",
+                        color: "#db4437",
+                        padding: "24px",
+                        fontSize: "16pt",
                     }}>No preview available</div> :
                     <iframe src={fileURL} title={"Preview"} className={"preview-iframe"}/>
             }

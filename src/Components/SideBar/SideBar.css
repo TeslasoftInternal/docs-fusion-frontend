@@ -55,6 +55,7 @@
     padding: 16px;
     outline: none;
     flex-grow: 4;
+    font-size: 12pt;
     background: black;
     border:none;
     resize: none;
