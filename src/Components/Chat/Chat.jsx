@@ -14,7 +14,7 @@ const Chat = ({userMessages, clearChat}) => {
             }}>close</button>
             <div className="message">
                 {
-                    userMessages.map((message, idx) => (
+                    userMessages !== undefined && userMessages != null ? userMessages.map((message, idx) => (
                         <div key={idx.toString()} className={message.type === "user" ? "user-message" : "ai-message"}>
                             <div className="icon-div">
                                 <img src={message.type === "user" ? userIcon : chatIcon} alt="user icon"/>
@@ -23,7 +23,7 @@ const Chat = ({userMessages, clearChat}) => {
                                 <Markdown remarkPlugins={[remarkGfm]}>{message.message}</Markdown>
                             </div>
                         </div>
-                    ))
+                    )) : null
                 }
             </div>
         </div>

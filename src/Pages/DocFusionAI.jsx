@@ -6,7 +6,7 @@ import {runApi} from "../Services/Api";
 
 const DocFusionAI = ({func}) => {
 
-    const [userMessages, setUserMessages] = useState(localStorage.getItem("messages") ? JSON.parse(localStorage.getItem("messages")) : []);
+    const [userMessages, setUserMessages] = useState(localStorage.getItem("messages") !== undefined && localStorage.getItem("messages") != null ? JSON.parse(localStorage.getItem("messages")) : []);
     const [file, setFile] = useState([])
     const [loading, setLoading] = useState(false)
 
@@ -17,11 +17,11 @@ const DocFusionAI = ({func}) => {
         }
 
         if (func.type === "analyze") {
-            mx.message = message
+            mx.message = message.message
         } else if (func.type === "summarize") {
             mx.message = "Summarize the following text."
         } else if (func.type === "translate") {
-            mx.message = "Translate to the following language: " + message
+            mx.message = "Translate to the following language: " + message.message
         } else if (func.type === "categorize") {
             mx.message = "Automatically categorize the document based on its content."
         } else if (func.type === "optimize") {
@@ -29,7 +29,14 @@ const DocFusionAI = ({func}) => {
         } else if (func.type === "highlight") {
             mx.message = "Highlight the most important sentences or paragraphs in the document."
         } else if (func.type === "email") {
-            mx.message = "Generate Professional Email according to the following instructions: " + message
+            mx.message = "Generate Professional Email according to the following instructions: " + message.message
+        }
+
+        if (userMessages === null || userMessages === undefined) {
+            setUserMessages([mx])
+            sendMessages([mx])
+            localStorage.setItem("messages", JSON.stringify([mx]))
+            return
         }
 
         setUserMessages([...userMessages, mx])
