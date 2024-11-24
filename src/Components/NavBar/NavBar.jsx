@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import logo from './icon.png'
 import account_icon from './account.png'
 import {prompts} from './prompts'
